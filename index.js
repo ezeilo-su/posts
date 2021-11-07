@@ -14,6 +14,10 @@ app.use(morgan('tiny'));
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
+// @route GET /posts
+// @desc get all posts
+// @access Public
+
 app.get('/posts', (req, res) => {
   res.status(200).send(posts);
 });
@@ -29,7 +33,7 @@ app.post('/posts', async (req, res) => {
 
   posts[id] = post;
 
-  await axios.post('http://localhost:4005/events', {
+  await axios.post('http://event-bus-srv:4005/events', {
     type: 'PostCreated',
     data: { ...post },
   });
