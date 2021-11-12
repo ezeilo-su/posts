@@ -18,11 +18,11 @@ app.use(json());
 // @desc get all posts
 // @access Public
 
-app.get('/posts', (req, res) => {
-  res.status(200).send(posts);
-});
+// app.get('/posts', (req, res) => {
+//   res.status(200).send(posts);
+// });
 
-app.post('/posts', async (req, res) => {
+app.post('/posts/create', async (req, res) => {
   const id = randomBytes(4).toString('hex');
   const { title } = req.body;
 
@@ -52,3 +52,6 @@ app.listen(4000, () => {
   console.log('v55');
   console.log('Listening on port 4000');
 });
+
+// query-depl client-depl comments-depl event-bus-depl moderation-depl posts-depl
+// posts-clusterip-srv posts-srv query-clusterip-srv client-clusterip-srv comments-clusterip-srv moderation-clusterip-srv event-bus-srv
