@@ -19,29 +19,29 @@ app.use(json());
 // @access Public
 
 app.post('/posts/create', async (req, res) => {
-  const id = randomBytes(4).toString('hex');
-  const { title } = req.body;
-
-  const post = {
-    id,
-    title,
-  };
-
-  posts[id] = post;
   try {
+    const id = randomBytes(4).toString('hex');
+    const { title } = req.body;
+  
+    const post = {
+      id,
+      title,
+    };
+  
+    posts[id] = post;
     await axios.post('http://event-bus-srv:4005/events', {
       type: 'PostCreated',
       data: { ...post },
+    });
+
+    res.status(201).send({
+      success: true,
+      post,
     });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ status: 'FAIL' });
   }
-
-  res.status(201).send({
-    success: true,
-    post,
-  });
 });
 
 app.post('/events', (req, res) => {
