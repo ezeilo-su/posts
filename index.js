@@ -54,4 +54,4 @@ app.listen(4000, () => {
 });
 
 // query-depl client-depl comments-depl event-bus-depl moderation-depl posts-depl
-// posts-clusterip-srv posts-srv query-clusterip-srv client-clusterip-srv comments-clusterip-srv moderation-clusterip-srv event-bus-srv
+// client-srv comments-srv moderation-srv query-srv posts-srv event-bus-srv
